@@ -2,7 +2,7 @@
 ![blackjack](http://www.onlineblackjack.com/wp-content/uploads/blackjack-580x370.png)
 
 ####1. Wireframes
-![Wireframe 2](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_2.png)
+![Wireframe 2](./assets/number_2.png)
 
 ![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_3.png)
 
