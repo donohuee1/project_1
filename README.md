@@ -2,21 +2,21 @@
 ![blackjack](http://www.onlineblackjack.com/wp-content/uploads/blackjack-580x370.png)
 
 ####1. Wireframes
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_2.png)
+![Wireframe 2](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_2.png)
 
 ![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_3.png)
 
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_4.png)
+![Wireframe 4](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_4.png)
 
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_4a.png)
+![Wireframe 4a](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_4a.png)
 
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_4b.png)
+![Wireframe 4b](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_4b.png)
 
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_5.png)
+![Wireframe 5](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_5.png)
 
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_6.png)
+![Wireframe 6](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_6.png)
 
-![Wireframe 3](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_7.png)
+![Wireframe 7](/users/betsydonohue/code/wdi/02_week/project_1/assets/number_7.png)
 
 
 ####2. User Stories
@@ -40,3 +40,8 @@
 	6. As a user, when I select my bet amount, I want the chips to go to the center so I can have a visual of my bet.
 
 ####5. Technologies you will use
+	-HTML
+	-CSS
+	-Javascript
+	-JQuery
+	-GitHub
