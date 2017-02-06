@@ -1,0 +1,24 @@
+#container {
+  background-color: black;
+}
+
+#rules {
+  background-color: rgba(200, 50, 200, 0.2);
+  width: 500px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+h3 {
+  color: green;
+  text-align: center;
+}
+
+p {
+  color: red;
+}
