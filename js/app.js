@@ -8,14 +8,16 @@ var player = {
   displayName: "Player",
   moneyScore: 1000,
   scoreBoard: $('#playerscore'),
-  handTotal: 0
+  handTotal: 0,
+  cardArr: [getCard(), getCard()] //when you press hit, you push a getCard into the array for playerCards
 }
 
 var dealer = {
   displayName: "Dealer",
   moneyScore: 1000,
   scoreBoard: $('#dealerscore'),
-  handTotal: 0
+  handTotal: 0,
+  cardArr: [getCard(), getCard()]
 }
 
 
@@ -62,11 +64,6 @@ function getCard () {
   return newCard
 }
 
-playerCard1 = getCard()
-playerCard2 = getCard()
-
-dealerCard1 = getCard()
-
 function cardScores(card, player) {
   var cardval = value.indexOf(card.value) + 2
   if(cardval == 14) {
@@ -78,20 +75,37 @@ function cardScores(card, player) {
   player.handTotal = player.handTotal + cardval
 }
 
-cardScores(playerCard2, player)//parameter we called earlier in getCard
-cardScores(playerCard1, player)
-cardScores(dealerCard1, dealer)
-//cardscores(dealerCard2, dealer)
+//playerArr = [getCard(), getCard()]
+//dealerArr = [getCard(), getCard()] - if other doesn't work
+
+cardScores(player.cardArr[0], player)
+cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (card, player)
+cardScores(dealer.cardArr[0], dealer)//created array in player and dealer objects
+cardScores(dealer.cardArr[1], dealer)
 
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
     return "player wins this round!"
+  } else if(player.handTotal > 21) {
+    return "dealer wins"
+  } else if(player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
+    return "dealer wins"
+  } else if(player.handTotal === dealer.handTotal && dealer.hantotal <= 21 && player.handTotal <= 21) {
+    return "It's a tie, no gain or loss"
+  } else if(player.hantotal > 21 && dealer.handTotal > 21) {
+    return "dealer wins"
   }
 }
 console.log(roundWinner())
 
-function hit () {
-  playerCard(x) = getCard()
-}
+//function hit () {
+  //playerCard(x) = getCard()
+//}
+
+$("#hit").click(function(){
+   player.cardArr.push(getCard())
+   cardScores(player.cardArr[player.cardArr.length - 1], player)
+});
+
 
 //if card is this suit && value, then show this image.
