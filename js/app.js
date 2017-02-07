@@ -1,10 +1,22 @@
 ///////GLOBAL VARIABLES////////
-console.log("connected")
-
 var cardSuits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
 var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
 var deck = []
+
+var player = {
+  displayName: "Player",
+  moneyScore: 1000,
+  scoreBoard: $('#playerscore'),
+  handTotal: 0
+}
+
+var dealer = {
+  displayName: "Dealer",
+  moneyScore: 1000,
+  scoreBoard: $('#dealerscore'),
+  handTotal: 0
+}
 
 
 /////////HAPPENS IMMEDIATELY////////
@@ -20,9 +32,9 @@ var Card = function(cardSuits, value) {
   this.stateValue = function(){
     return 'The ' + this.value + ' of ' + this.cardSuits + '.'
   }
-}//Capital means it's not a normal function and is a blueprint(or constructor)
+}
 
-
+//Capital means it's not a normal function and is a blueprint(or constructor)
 for(var i = 0; i < value.length; i++){
   for(var j = 0; j < cardSuits.length; j++){
     var card = new Card(cardSuits[j], value[i])
@@ -53,12 +65,33 @@ function getCard () {
 playerCard1 = getCard()
 playerCard2 = getCard()
 
-function playerCardScores() {
-  return card1 + card2
+dealerCard1 = getCard()
+
+function cardScores(card, player) {
+  var cardval = value.indexOf(card.value) + 2
+  if(cardval == 14) {
+    cardval = 11//Ace
+  } else if(cardval >= 11) {
+    cardval = 10//will work for jack, queen, and king
+  }
+  console.log(cardval)
+  player.handTotal = player.handTotal + cardval
 }
 
-function dealerCardScores() {
+cardScores(playerCard2, player)//parameter we called earlier in getCard
+cardScores(playerCard1, player)
+cardScores(dealerCard1, dealer)
+//cardscores(dealerCard2, dealer)
 
+function roundWinner () {
+  if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
+    return "player wins this round!"
+  }
+}
+console.log(roundWinner())
+
+function hit () {
+  playerCard(x) = getCard()
 }
 
 //if card is this suit && value, then show this image.
