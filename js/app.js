@@ -101,7 +101,7 @@ function roundWinner () {
 }
 console.log(roundWinner())
 console.log("dealer hand =" + dealer.handTotal)
-console.log("player hand =" +player.handTotal)
+console.log("player hand =" + player.handTotal)
 
 //function hit () {
   //playerCard(x) = getCard()
@@ -110,7 +110,15 @@ console.log("player hand =" +player.handTotal)
 $("#hit").click(function(){
    player.cardArr.push(getCard())
    cardScores(player.cardArr[player.cardArr.length - 1], player)
-   console.log(player.handTotal)
+   console.log("player hand =" +player.handTotal)
+   console.log("dealer hand =" +dealer.handTotal)
+});
+
+$("#stay").click(function(){
+   dealer.cardArr.push(getCard())
+   cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
+   console.log("player hand =" + player.handTotal)
+   console.log("dealer hand =" + dealer.handTotal)
 });
 
 
