@@ -55,7 +55,7 @@ deck.splice
 function getCard (1, 51) {
   min = Math.ceil(1);
   max = Math.floor(51);
-  return Math.floor(Math.random() * (51 - 1)) + 1;
+  return Math.floor(Math.random() * (deck.length - 1)) + 1;
 }
 
 //if card is this suit && value, then show this image.*/
