@@ -6,11 +6,6 @@ var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
 var deck = []
 
-/*var randomNumber =
-
-x = 1, y = 10
-Math.floor(Math.random() * ((10-1)+1) + 1);*/
-
 
 /////////HAPPENS IMMEDIATELY////////
 
@@ -40,22 +35,30 @@ document.getElementById('showdeck').addEventListener('click', function() {
   console.log(deck.length)
 })
 
-/*function playerCardScores() {
-   var card1 = Math.floor(Math.random() * 10 + 1);
-   var card2 = Math.floor(Math.random() * 10 + 1);
-   return (card1 + card2);
-           }
 
-//splice lets you take from middle.  push it into players hand and Splice will change the contents of the deck array so you are not reusing cards.
+/*Pulling a random card from the deck.  defined my minimum, my maximium, randomly
+generated the index number I am targeting in the deck.  Created a new card using
+the deck array and the index number I randomly generated. I am then removing that
+card from the deck using the splice method so it is not reused.*/
 
-getCard function = {
-deck.splice
+function getCard () {
+  var min = Math.ceil(0)
+  var max = Math.floor(deck.length - 1)
+  var index = Math.floor(Math.random() * (max-min)) + min;
+  var newCard = deck[index]
+  deck.splice(index, 1)
+  return newCard
 }
 
-function getCard (1, 51) {
-  min = Math.ceil(1);
-  max = Math.floor(51);
-  return Math.floor(Math.random() * (deck.length - 1)) + 1;
+playerCard1 = getCard()
+playerCard2 = getCard()
+
+function playerCardScores() {
+  return card1 + card2
 }
 
-//if card is this suit && value, then show this image.*/
+function dealerCardScores() {
+
+}
+
+//if card is this suit && value, then show this image.
