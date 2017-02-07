@@ -112,14 +112,26 @@ $("#hit").click(function(){
    cardScores(player.cardArr[player.cardArr.length - 1], player)
    console.log("player hand =" +player.handTotal)
    console.log("dealer hand =" +dealer.handTotal)
+   console.log(roundWinner())
 });
 
-$("#stay").click(function() do {
-   dealer.cardArr.push(getCard())
-   cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
-}
-while (dealer.handTotal < 17);
+$("#stay").click(function(){
+  while(dealer.handTotal < 17) {
+    dealer.cardArr.push(getCard())
+    cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
+  } console.log("dealer hand =" +dealer.handTotal)
+    console.log("player hand =" +player.handTotal)
+    console.log(roundWinner())
 });
+
+
+
+/*$("#stay").click(function()
+do {
+   dealer.cardArr.push(getCard());
+   cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer);
+}
+while (dealer.handTotal < 17);*/
 
 /*$("#stay").click(function(){
    dealer.cardArr.push(getCard())
