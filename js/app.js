@@ -114,12 +114,19 @@ $("#hit").click(function(){
    console.log("dealer hand =" +dealer.handTotal)
 });
 
-$("#stay").click(function(){
+$("#stay").click(function() do {
+   dealer.cardArr.push(getCard())
+   cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
+}
+while (dealer.handTotal < 17);
+});
+
+/*$("#stay").click(function(){
    dealer.cardArr.push(getCard())
    cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
    console.log("player hand =" + player.handTotal)
    console.log("dealer hand =" + dealer.handTotal)
-});
+});*/
 
 
 //if card is this suit && value, then show this image.
