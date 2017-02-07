@@ -9,7 +9,7 @@ var player = {
   moneyScore: 1000,
   scoreBoard: $('#playerscore'),
   handTotal: 0,
-  cardArr: [getCard(), getCard()] //when you press hit, you push a getCard into the array for playerCards
+  cardArr: [] //when you press hit, you push a getCard into the array for playerCards
 }
 
 var dealer = {
@@ -17,7 +17,7 @@ var dealer = {
   moneyScore: 1000,
   scoreBoard: $('#dealerscore'),
   handTotal: 0,
-  cardArr: [getCard(), getCard()]
+  cardArr: []
 }
 
 
@@ -75,8 +75,11 @@ function cardScores(card, player) {
   player.handTotal = player.handTotal + cardval
 }
 
-//playerArr = [getCard(), getCard()]
-//dealerArr = [getCard(), getCard()] - if other doesn't work
+player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
+player.cardArr.push(getCard())
+dealer.cardArr.push(getCard())
+dealer.cardArr.push(getCard())
+
 
 cardScores(player.cardArr[0], player)
 cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (card, player)
@@ -97,6 +100,8 @@ function roundWinner () {
   }
 }
 console.log(roundWinner())
+console.log("dealer hand =" + dealer.handTotal)
+console.log("player hand =" +player.handTotal)
 
 //function hit () {
   //playerCard(x) = getCard()
@@ -105,6 +110,7 @@ console.log(roundWinner())
 $("#hit").click(function(){
    player.cardArr.push(getCard())
    cardScores(player.cardArr[player.cardArr.length - 1], player)
+   console.log(player.handTotal)
 });
 
 
