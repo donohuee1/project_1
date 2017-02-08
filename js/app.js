@@ -27,7 +27,7 @@ var winner = true
 /////////HAPPENS IMMEDIATELY////////
 
 
-
+//'<img src="playing_cards/card_images/'+this.value+'_of_'+this.cardSuits.toLowerCase()+'.png"/>'
 
 
 
@@ -41,17 +41,13 @@ var Card = function(cardSuits, value) {
 }
 
 //Capital means it's not a normal function and is a blueprint(or constructor)
+//Building Deck
 for(var i = 0; i < value.length; i++){
   for(var j = 0; j < cardSuits.length; j++){
     var card = new Card(cardSuits[j], value[i])
     deck.push(card)
   }
 }
-
-document.getElementById('start').addEventListener('click', function() {
-  console.log(deck)
-  console.log(deck.length)
-})
 
 /*Pulling a random card from the deck.  defined my minimum, my maximium, randomly
 generated the index number I am targeting in the deck.  Created a new card using
@@ -66,31 +62,6 @@ function getCard () {
   deck.splice(index, 1)
   return newCard
 }
-
-////////////////////////////////////////////////////////////
-/*function playerCardScores(card, player) {
-  var cardval = value.indexOf(card.value) + 2
-  if(cardval == 14) {
-    carval = 11//Ace
-  } else if(carval >= 11) {
-    carval = 10//Jack, Queen, or King
-  }
-  console.log(cardval)
-  palyer.handTotal = player.handTotal + cardval
-}
-
-function dealerCardScores(card, dealer) {
-  var cardval = value.indexOf(card.value) + 2
-  if(cardval == 14) {
-    carval = 11//Ace
-  } else if(carval >= 11) {
-    carval = 10//Jack, Queen, or King
-  }
-  console.log(cardval)
-  dealer.handTotal = dealerCardScores(dealer.cardArr[0], dealer)////doesn't work
-}*/
-
-///////////////////////////////////////////////////////////
 
 function cardScores(card, player) {//break into player score and dealer score.  Dealer only first value until you hit stay and then add all cards for dealer score.
   var cardval = value.indexOf(card.value) + 2
@@ -203,18 +174,6 @@ $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. S
 }
 roundUp();*/
 
-/*function resetRound() {
-  location.reload()
-  round++;
-  player.moneyScore = player.moneyScore
-  $("#roundNumber").html(round);
-  $("#playerScore").html(player.moneyScore);
-}
-
-$("#resetRoundButton").click(function(){
-  resetRound();
-})*/
-
 function endRound() {
   deck = []
   for(var i = 0; i < value.length; i++){
@@ -254,6 +213,13 @@ function gameWinner() {
 gameWinner();
 
 
+function resetRound() {
+  location.reload()
+}
+
+$("#resetRoundButton").click(function(){
+  resetRound()
+})
 
 //if card is this suit && value, then show this image.
 
