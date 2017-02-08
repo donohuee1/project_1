@@ -20,7 +20,7 @@ var dealer = {
   cardArr: []
 }
 
-
+var playerDone = false
 /////////HAPPENS IMMEDIATELY////////
 
 
@@ -64,7 +64,7 @@ function getCard () {
   return newCard
 }
 
-function cardScores(card, player) {
+function cardScores(card, player) {//break into player score and dealer score.  Dealer only first value until you hit stay and then add all cards for dealer score.
   var cardval = value.indexOf(card.value) + 2
   if(cardval == 14) {
     cardval = 11//Ace
@@ -78,13 +78,13 @@ function cardScores(card, player) {
 player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
 player.cardArr.push(getCard())
 dealer.cardArr.push(getCard())
-dealer.cardArr.push(getCard())
+dealer.cardArr.push(getCard())//NEED TO HIDE THIS VALUE AT FIRST AND ONLY SHOW ONCE PLAYER HAS CLICKED STAYED
 
 
 cardScores(player.cardArr[0], player)
 cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (card, player)
 cardScores(dealer.cardArr[0], dealer)//created array in player and dealer objects
-cardScores(dealer.cardArr[1], dealer)
+cardScores(dealer.cardArr[1], dealer)//don't want to add score of this card to dealers total until hit stay or bust
 
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
@@ -98,16 +98,20 @@ function roundWinner () {
     return "dealer wins"
   } else if(player.handTotal === dealer.handTotal && dealer.hantotal <= 21 && player.handTotal <= 21) {
     return "It's a tie, no gain or loss"
-  } else if(player.hantotal > 21 && dealer.handTotal > 21) {
+  } else if(player.handTotal > 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     return "dealer wins"
   }
 }
-console.log(roundWinner())
+//console.log(roundWinner())
 console.log("dealer hand =" + dealer.handTotal)
 console.log("player hand =" + player.handTotal)
 
-
+function hitWinLogic(){
+  if(player.handTotal > 21) {
+    return "dealer wins"
+  }
+}
 /////////////If there's time/////////////
 /*function bet() {
 
@@ -127,7 +131,8 @@ $("#hit").click(function(){
    cardScores(player.cardArr[player.cardArr.length - 1], player)
    console.log("player hand =" +player.handTotal)
    console.log("dealer hand =" +dealer.handTotal)
-   console.log(roundWinner())
+   //console.log(roundWinner())
+   console.log(hitWinLogic())
 });
 
 $("#stay").click(function(){
@@ -136,17 +141,22 @@ $("#stay").click(function(){
     cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
   } console.log("dealer hand =" +dealer.handTotal)
     console.log("player hand =" +player.handTotal)
+    var playerDone = true
     console.log(roundWinner())
 });
+//If I hit stay, forces dealer to draw card
+//playerdone = false, however, if stay clicked, playerdone = true
+
+function getWinnerStayClick(){
+  if(playerDone = true)
+  console.log(roundWinner())
+}
 
 $("#hideRules").click(function(){
   $("#rules").hide();
 })
 
-$("#playerscore").html(player.moneyScore)
-
-//$(selector).html(function(index,currentcontent))
-
+$("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 
 
 //if card is this suit && value, then show this image.
