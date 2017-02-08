@@ -20,8 +20,8 @@ var dealer = {
   cardArr: []
 }
 
-var playerDone = false
 /////////HAPPENS IMMEDIATELY////////
+
 
 
 
@@ -44,11 +44,10 @@ for(var i = 0; i < value.length; i++){
   }
 }
 
-document.getElementById('showdeck').addEventListener('click', function() {
+document.getElementById('start').addEventListener('click', function() {
   console.log(deck)
   console.log(deck.length)
 })
-
 
 /*Pulling a random card from the deck.  defined my minimum, my maximium, randomly
 generated the index number I am targeting in the deck.  Created a new card using
@@ -64,6 +63,31 @@ function getCard () {
   return newCard
 }
 
+////////////////////////////////////////////////////////////
+/*function playerCardScores(card, player) {
+  var cardval = value.indexOf(card.value) + 2
+  if(cardval == 14) {
+    carval = 11//Ace
+  } else if(carval >= 11) {
+    carval = 10//Jack, Queen, or King
+  }
+  console.log(cardval)
+  palyer.handTotal = player.handTotal + cardval
+}
+
+function dealerCardScores(card, dealer) {
+  var cardval = value.indexOf(card.value) + 2
+  if(cardval == 14) {
+    carval = 11//Ace
+  } else if(carval >= 11) {
+    carval = 10//Jack, Queen, or King
+  }
+  console.log(cardval)
+  dealer.handTotal = dealerCardScores(dealer.cardArr[0], dealer)////doesn't work
+}*/
+
+///////////////////////////////////////////////////////////
+
 function cardScores(card, player) {//break into player score and dealer score.  Dealer only first value until you hit stay and then add all cards for dealer score.
   var cardval = value.indexOf(card.value) + 2
   if(cardval == 14) {
@@ -78,13 +102,13 @@ function cardScores(card, player) {//break into player score and dealer score.  
 player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
 player.cardArr.push(getCard())
 dealer.cardArr.push(getCard())
-dealer.cardArr.push(getCard())//NEED TO HIDE THIS VALUE AT FIRST AND ONLY SHOW ONCE PLAYER HAS CLICKED STAYED
+dealer.cardArr.push(getCard())//not calling this card until player hits stay, so it won't show until it's the dealer's turn
 
 
 cardScores(player.cardArr[0], player)
 cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (card, player)
 cardScores(dealer.cardArr[0], dealer)//created array in player and dealer objects
-cardScores(dealer.cardArr[1], dealer)//don't want to add score of this card to dealers total until hit stay or bust
+//cardScores(dealer.cardArr[1], dealer) - This gets called in the #stay click function
 
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
@@ -96,11 +120,14 @@ function roundWinner () {
   } else if(player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
     player.moneyScore = player.moneyScore - 100
     return "dealer wins"
-  } else if(player.handTotal === dealer.handTotal && dealer.hantotal <= 21 && player.handTotal <= 21) {
+  } else if(player.handTotal === dealer.handTotal && dealer.handTotal <= 21 && player.handTotal <= 21) {
     return "It's a tie, no gain or loss"
   } else if(player.handTotal > 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     return "dealer wins"
+  } else if(player.handTotal <= 21 && dealer.handTotal > 21) {
+    player.moneyScore = player.moneyScore - 100
+    return "player wins"
   }
 }
 //console.log(roundWinner())
@@ -136,16 +163,16 @@ $("#hit").click(function(){
 });
 
 $("#stay").click(function(){
+cardScores(dealer.cardArr[1], dealer)
   while(dealer.handTotal < 17) {
     dealer.cardArr.push(getCard())
     cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
+    //dealer.handTotal = dealer.handTotal + cardval//doesn't work
   } console.log("dealer hand =" +dealer.handTotal)
     console.log("player hand =" +player.handTotal)
-    var playerDone = true
     console.log(roundWinner())
 });
 //If I hit stay, forces dealer to draw card
-//playerdone = false, however, if stay clicked, playerdone = true
 
 function getWinnerStayClick(){
   if(playerDone = true)
@@ -160,3 +187,5 @@ $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. S
 
 
 //if card is this suit && value, then show this image.
+
+//2 divs for player and 2 for dealer
