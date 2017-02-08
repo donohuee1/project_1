@@ -88,14 +88,18 @@ cardScores(dealer.cardArr[1], dealer)
 
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
+    player.moneyScore = player.moneyScore + 100
     return "player wins this round!"
   } else if(player.handTotal > 21) {
+    player.moneyScore = player.moneyScore - 100
     return "dealer wins"
   } else if(player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
+    player.moneyScore = player.moneyScore - 100
     return "dealer wins"
   } else if(player.handTotal === dealer.handTotal && dealer.hantotal <= 21 && player.handTotal <= 21) {
     return "It's a tie, no gain or loss"
   } else if(player.hantotal > 21 && dealer.handTotal > 21) {
+    player.moneyScore = player.moneyScore - 100
     return "dealer wins"
   }
 }
@@ -103,9 +107,20 @@ console.log(roundWinner())
 console.log("dealer hand =" + dealer.handTotal)
 console.log("player hand =" + player.handTotal)
 
-//function hit () {
-  //playerCard(x) = getCard()
-//}
+
+/////////////If there's time/////////////
+/*function bet() {
+
+}*/
+
+///////////////THIS DOESN'T WORK/////////////////
+function gameWinner() {
+  if(player.moneyScore <= 0) {
+    alert("dealer wins!")
+  } else if(player.moneyScore >= 2000) {
+    alert("player wins!")
+  }
+}
 
 $("#hit").click(function(){
    player.cardArr.push(getCard())
@@ -124,21 +139,14 @@ $("#stay").click(function(){
     console.log(roundWinner())
 });
 
+$("#hideRules").click(function(){
+  $("#rules").hide();
+})
 
+$("#playerscore").html(player.moneyScore)
 
-/*$("#stay").click(function()
-do {
-   dealer.cardArr.push(getCard());
-   cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer);
-}
-while (dealer.handTotal < 17);*/
+//$(selector).html(function(index,currentcontent))
 
-/*$("#stay").click(function(){
-   dealer.cardArr.push(getCard())
-   cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
-   console.log("player hand =" + player.handTotal)
-   console.log("dealer hand =" + dealer.handTotal)
-});*/
 
 
 //if card is this suit && value, then show this image.
