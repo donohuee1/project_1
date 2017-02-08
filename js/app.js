@@ -20,6 +20,10 @@ var dealer = {
   cardArr: []
 }
 
+var round = 0
+
+var winner = true
+
 /////////HAPPENS IMMEDIATELY////////
 
 
@@ -113,22 +117,28 @@ cardScores(dealer.cardArr[0], dealer)//created array in player and dealer object
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
     player.moneyScore = player.moneyScore + 100
-    return "player wins this round!"
+    var winner = true
+    return "player wins"
   } else if(player.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
+    var winner = false
     return "dealer wins"
   } else if(player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
     player.moneyScore = player.moneyScore - 100
+    var winner = false
     return "dealer wins"
   } else if(player.handTotal === dealer.handTotal && dealer.handTotal <= 21 && player.handTotal <= 21) {
     return "It's a tie, no gain or loss"
   } else if(player.handTotal > 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
+    var winner = false
     return "dealer wins"
   } else if(player.handTotal <= 21 && dealer.handTotal > 21) {
-    player.moneyScore = player.moneyScore - 100
+    player.moneyScore = player.moneyScore + 100
+    var winner = true
     return "player wins"
   }
+  $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 }
 //console.log(roundWinner())
 console.log("dealer hand =" + dealer.handTotal)
@@ -136,7 +146,10 @@ console.log("player hand =" + player.handTotal)
 
 function hitWinLogic(){
   if(player.handTotal > 21) {
+    player.moneyScore = player.moneyScore -100
+    var winner = false
     return "dealer wins"
+    $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
   }
 }
 /////////////If there's time/////////////
@@ -144,14 +157,8 @@ function hitWinLogic(){
 
 }*/
 
-///////////////THIS DOESN'T WORK/////////////////
-function gameWinner() {
-  if(player.moneyScore <= 0) {
-    alert("dealer wins!")
-  } else if(player.moneyScore >= 2000) {
-    alert("player wins!")
-  }
-}
+///////////////
+
 
 $("#hit").click(function(){
    player.cardArr.push(getCard())
@@ -160,6 +167,7 @@ $("#hit").click(function(){
    console.log("dealer hand =" +dealer.handTotal)
    //console.log(roundWinner())
    console.log(hitWinLogic())
+   $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 });
 
 $("#stay").click(function(){
@@ -171,19 +179,39 @@ cardScores(dealer.cardArr[1], dealer)
   } console.log("dealer hand =" +dealer.handTotal)
     console.log("player hand =" +player.handTotal)
     console.log(roundWinner())
+    $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 });
 //If I hit stay, forces dealer to draw card
-
-function getWinnerStayClick(){
-  if(playerDone = true)
-  console.log(roundWinner())
-}
 
 $("#hideRules").click(function(){
   $("#rules").hide();
 })
 
 $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+///////////////////////////////////
+function roundUp() {
+    round++; //increments round
+    if(winner = true) {
+      player.moneyScore++;
+      $("#playerscore").html(player.moneyScore);
+      $("#roundNumber").html(round);
+    } else if(winner = false) {
+      player.moneyScore--;
+      $("#playerScore").html(player.moneyScore);
+      $("#roundNumber").html(round);
+    }
+}
+roundUp();
+
+function gameWinner() {
+  if(player.moneyScore <= 0) {
+    alert("dealer wins")
+  } else if(player.moneyScore >= 2000) {
+    alert("player wins")
+  }
+}
+gameWinner();
+
 
 
 //if card is this suit && value, then show this image.
