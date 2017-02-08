@@ -20,7 +20,7 @@ var dealer = {
   cardArr: []
 }
 
-var round = 0
+var round = 1
 
 var winner = true
 
@@ -189,7 +189,7 @@ $("#hideRules").click(function(){
 
 $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 ///////////////////////////////////
-function roundUp() {
+/*function roundUp() {
     round++; //increments round
     if(winner = true) {
       player.moneyScore++;
@@ -201,7 +201,48 @@ function roundUp() {
       $("#roundNumber").html(round);
     }
 }
-roundUp();
+roundUp();*/
+
+/*function resetRound() {
+  location.reload()
+  round++;
+  player.moneyScore = player.moneyScore
+  $("#roundNumber").html(round);
+  $("#playerScore").html(player.moneyScore);
+}
+
+$("#resetRoundButton").click(function(){
+  resetRound();
+})*/
+
+function endRound() {
+  deck = []
+  for(var i = 0; i < value.length; i++){
+    for(var j = 0; j < cardSuits.length; j++){
+      var card = new Card(cardSuits[j], value[i])
+      deck.push(card)
+    }
+  }
+}
+
+$("#endRoundButton").click(function(){
+  endRound()
+  player.cardArr = []
+  dealer.cardArr = []
+  player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
+  player.cardArr.push(getCard())
+  dealer.cardArr.push(getCard())
+  dealer.cardArr.push(getCard())//not calling this card until player hits stay, so it won't show until it's the dealer's turn
+
+  player.handTotal = 0
+  dealer.handTotal = 0
+  cardScores(player.cardArr[0], player)
+  cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (card, player)
+  cardScores(dealer.cardArr[0], dealer)
+  console.log("dealer hand =" + dealer.handTotal)
+  console.log("player hand =" + player.handTotal)
+  $("#roundNumber").html(++round)
+})
 
 function gameWinner() {
   if(player.moneyScore <= 0) {
