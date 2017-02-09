@@ -1,13 +1,14 @@
 #container {
-  background-color: rgba(55, 175, 0, 0.5);
-  padding: 5px;
+  background-color: black;
+  padding: 10px;
 }
 
 #rules {
-  background-color: rgba(200, 50, 200, 0.2);
+  background-color: red;
   width: 500px;
   margin: 0 auto;
   color: black;
+  border-radius: 20px;
 }
 
 h1 {
@@ -16,12 +17,12 @@ h1 {
 }
 
 h3 {
-  color: black;
+  color: red;
   text-align: center;
 }
 
 p {
-  color: red;
+  color: black;
 }
 
 ul {
@@ -34,12 +35,13 @@ img {
 }
 
 #playerCards {
-  background-color: yellow;
-  margin: 5px;
+  background-color: red;
+  margin: 0 auto;
+  border-radius: 20px;
 }
 
 #dealerCards {
-  background-color: blue;
+  background-color: red;
   margin: 5px;
 }
 
@@ -121,4 +123,36 @@ img {
   background-color: black;
   display: inline-block;
   margin: 0 auto;
+}
+
+#endRoundButton {
+  background-color: rgb(0, 200, 100);
+  border: 2px solid black;
+  margin: 2px;
+  float: right;
+}
+
+#newGameButton {
+  float: right;
+  background-color: rgb(0, 200, 100);
+  border: 2px solid black;
+  margin: 2px;
+  display: block;
+}
+
+#hit {
+  background-color: rgb(0, 200, 100);
+  border-radius: 20px;
+  border: 2px solid black;
+}
+
+#stay {
+  background-color: rgb(0, 200, 100);
+  border-radius: 20px;
+  border: 2px solid black;
+}
+
+#hideRules {
+  margin: 0 auto;
+  display: block;
 }

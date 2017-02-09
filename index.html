@@ -12,6 +12,7 @@
     <div id="container">
     <div id="table">
       <h1>BLACKJACK</h1>
+      <button id="newGameButton">New Game</button>
       <div id="scoreboard">
       <h3>Player: <span id="playerscore">0</span> Dollars  |  Round: <span id="roundNumber">1</span></h3>
       </div>
@@ -20,7 +21,7 @@
           <ul>
             <li>You, the player, and the dealer are each dealt 2 cards off the bat.  You are able to see the total of both your cards immediately, however, the dealer's second card is hidden until you choose to "stay" or "hit".</li>
             <li>Hit: Means you take another card which is added to your hand total for the round.  You can hit as many times as you like, until you go over 21 (or bust).</li>
-            <li>Stay: Means you refuse to be dealt another card and are sticking with your current hand total for the round.  Once you hit "stay", the dealer will reveal their second card and hit until they reach at least 17</li>
+            <li>Stay: Means you refuse to be dealt another card and are sticking with your current hand total for the round.  Once you hit "stay", the dealer will reveal their second card and hit until they reach at least 17.</li>
             <li>Who ever comes closer to 21 without going over, wins the round!</li>
             <li>Dealer wins ties</li>
             <li>Each round, is a $100 bet and the player starts with $1000.  So if player wins the round, they gain $100, and if they lose, they forfeit $100.
@@ -28,11 +29,10 @@
           </ul>
         <button id="hideRules">Hide Rules</button>
     </div>
+    <button id="endRoundButton">End Round</button>
     <div id="allPlayerButtons">
       <button id="hit">Hit</button>
       <button id="stay">Stay</button>
-      <button id="endRoundButton">End Round</button>
-      <button id="newGameButton">New Game</button>
     </div>
   <div id="playerCards">
     <p>PLAYER CARDS</p>
