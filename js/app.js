@@ -266,9 +266,11 @@ $("#endRoundButton").click(function() {
 function gameWinner() {
   console.log("player bust")
   if (player.moneyScore <= 0) {
-    alert("dealer wins")
+    //alert("dealer wins")
+    $("#openModal").html("Sorry, you're out of money...just like real life! Dealer won this game, but click 'NEW GAME' to play again")
   } else if (player.moneyScore >= 2000) {
-    alert("player wins")
+    //alert("player wins")
+    $("#openModal").html("You better go to Vegas, because you just won! Click 'NEW GAME' to play again")
   }
 }
 
