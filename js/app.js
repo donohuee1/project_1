@@ -133,6 +133,8 @@ function hitWinLogic(){
   if(player.handTotal > 21) {
     player.moneyScore = player.moneyScore -100
     var winner = false
+    $("#hit").off()
+    $("#stay").off()
     return "dealer wins"
     $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
   }
@@ -179,6 +181,7 @@ $("#stay").click(function(){
     $("#playerHandScore").html(player.handTotal)
     $("#dealerHandScore").html(dealer.handTotal)
     $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+    $("#hit").off()
 });
 //If I hit stay, forces dealer to draw card
 
@@ -204,6 +207,8 @@ $("#endRoundButton").click(function(){
   endRound()
   player.cardArr = []
   dealer.cardArr = []
+  //$('#playerCard').removeClass('playerCards')
+
   player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
   player.cardArr.push(getCard())
   dealer.cardArr.push(getCard())
@@ -219,9 +224,22 @@ $("#endRoundButton").click(function(){
   $("#roundNumber").html(++round)
   $("#dealerHandScore").html(dealer.handTotal)
   $("#playerHandScore").html(player.handTotal)
+  //$("#hit").on()
+  //$("#stay").on()
+  //$("#playerCard1 img").remove()
+  //$("#playerCard2 img").remove()
+  //$("#playerCard3 img").remove()
+
+  /*$("#playerCard"+cardCounterPlayer).html("<img src='assets/playing_card_images/"+
+   player.cardArr[player.cardArr.length - 1].value+"_of_"+player.cardArr[player.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
+   cardCounterPlayer++;
+   $("#dealerCard"+cardCounterDealer).html("<img src='assets/playing_card_images/"+
+   dealer.cardArr[dealer.cardArr.length - 1].value+"_of_"+dealer.cardArr[dealer.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
+   cardCounterDealer++;*/
 })
 
 function gameWinner() {
+  console.log("player bust")
   if(player.moneyScore <= 0) {
     alert("dealer wins")
   } else if(player.moneyScore >= 2000) {
@@ -231,14 +249,14 @@ function gameWinner() {
 gameWinner();
 
 
-function resetRound() {
+function resetGame() {
   location.reload()
   playerHandScore = 0
   dealerHandScore = 0
 }
 
-$("#resetRoundButton").click(function(){
-  resetRound()
+$("#newGameButton").click(function(){
+  resetGame()
 })
 
 //$("#playercard1").css(background-img, "url(/playiing)" )
