@@ -28,6 +28,11 @@ ul {
   background-color: rgba(200, 50, 200, 0);
 }
 
+img {
+  width: 150px;
+  height: 250px;
+}
+
 #playerCards {
   background-color: yellow;
   margin: 5px;

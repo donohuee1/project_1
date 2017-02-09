@@ -80,7 +80,7 @@ function cardScores(card, player) {//break into player score and dealer score.  
 player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
 player.cardArr.push(getCard())
 dealer.cardArr.push(getCard())
-dealer.cardArr.push(getCard())//not calling this card until player hits stay, so it won't show until it's the dealer's turn
+//dealer.cardArr.push(getCard())//not calling this card until player hits stay, so it won't show until it's the dealer's turn
 
 
 cardScores(player.cardArr[0], player)
@@ -144,6 +144,9 @@ function hitWinLogic(){
 
 ///////////////
 
+var cardCounterPlayer = 3;
+
+var cardCounterDealer = 2;
 
 $("#hit").click(function(){
    player.cardArr.push(getCard())
@@ -155,19 +158,20 @@ $("#hit").click(function(){
    $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
    $("#playerHandScore").html(player.handTotal)
    $("#dealerHandScore").html(dealer.handTotal)
-   $("#playerCard3").html("<img src='assets/playing_card_images/"+
-    player.cardArr[2].value+"_of_"+player.cardArr[2].cardSuits.toLowerCase()+".png'/>")
-  $("#playerCard4").html("<img src='assets/playing_card_images/"+
-    player.cardArr[3].value+"_of_"+player.cardArr[3].cardSuits.toLowerCase()+".png'/>")
-  $("#playerCard5").html("<img src='assets/playing_card_images/"+
-    player.cardArr[4].value+"_of_"+player.cardArr[4].cardSuits.toLowerCase()+".png'/>")
+   $("#playerCard"+cardCounterPlayer).html("<img src='assets/playing_card_images/"+
+    player.cardArr[player.cardArr.length - 1].value+"_of_"+player.cardArr[player.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
+    cardCounterPlayer++;
 });
 
 $("#stay").click(function(){
-cardScores(dealer.cardArr[1], dealer)
+//cardScores(dealer.cardArr[0], dealer)//originally 1
   while(dealer.handTotal < 17) {
     dealer.cardArr.push(getCard())
+    console.log(dealer.cardArr)
     cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
+    $("#dealerCard"+cardCounterDealer).html("<img src='assets/playing_card_images/"+
+        dealer.cardArr[dealer.cardArr.length - 1].value+"_of_"+dealer.cardArr[dealer.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
+    cardCounterDealer++;
     //dealer.handTotal = dealer.handTotal + cardval//doesn't work
   } console.log("dealer hand =" +dealer.handTotal)
     console.log("player hand =" +player.handTotal)
@@ -175,8 +179,6 @@ cardScores(dealer.cardArr[1], dealer)
     $("#playerHandScore").html(player.handTotal)
     $("#dealerHandScore").html(dealer.handTotal)
     $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
-    $("#dealerCard2").html("<img src='assets/playing_card_images/"+
-        dealer.cardArr[1].value+"_of_"+dealer.cardArr[1].cardSuits.toLowerCase()+".png'/>")
 });
 //If I hit stay, forces dealer to draw card
 
