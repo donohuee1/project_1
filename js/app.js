@@ -4,6 +4,8 @@ var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
 var deck = []
 
+//var cardImages = [2, 3, 4, ] - these are links then use indexOf based on the randomly generated cards
+
 var player = {
   displayName: "Player",
   moneyScore: 1000,
@@ -27,8 +29,6 @@ var winner = true
 /////////HAPPENS IMMEDIATELY////////
 
 
-//'<img src="playing_cards/card_images/'+this.value+'_of_'+this.cardSuits.toLowerCase()+'.png"/>'
-
 
 
 /////////FUNCTIONS///////////////
@@ -48,6 +48,7 @@ for(var i = 0; i < value.length; i++){
     deck.push(card)
   }
 }
+
 
 /*Pulling a random card from the deck.  defined my minimum, my maximium, randomly
 generated the index number I am targeting in the deck.  Created a new card using
@@ -70,7 +71,9 @@ function cardScores(card, player) {//break into player score and dealer score.  
   } else if(cardval >= 11) {
     cardval = 10//will work for jack, queen, and king
   }
-  console.log(cardval)
+  console.log(cardval)//want cardval to link up with a card image
+  $("#playerHandScore").html(player.handTotal)
+  $("#dealerHandScore").html(dealer.handTotal)
   player.handTotal = player.handTotal + cardval
 }
 
@@ -114,6 +117,8 @@ function roundWinner () {
 //console.log(roundWinner())
 console.log("dealer hand =" + dealer.handTotal)
 console.log("player hand =" + player.handTotal)
+$("#playerHandScore").html(player.handTotal)
+$("#dealerHandScore").html(dealer.handTotal)
 
 function hitWinLogic(){
   if(player.handTotal > 21) {
@@ -139,6 +144,8 @@ $("#hit").click(function(){
    //console.log(roundWinner())
    console.log(hitWinLogic())
    $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+   $("#playerHandScore").html(player.handTotal)
+   $("#dealerHandScore").html(dealer.handTotal)
 });
 
 $("#stay").click(function(){
@@ -150,6 +157,8 @@ cardScores(dealer.cardArr[1], dealer)
   } console.log("dealer hand =" +dealer.handTotal)
     console.log("player hand =" +player.handTotal)
     console.log(roundWinner())
+    $("#playerHandScore").html(player.handTotal)
+    $("#dealerHandScore").html(dealer.handTotal)
     $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 });
 //If I hit stay, forces dealer to draw card
@@ -160,19 +169,7 @@ $("#hideRules").click(function(){
 
 $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
 ///////////////////////////////////
-/*function roundUp() {
-    round++; //increments round
-    if(winner = true) {
-      player.moneyScore++;
-      $("#playerscore").html(player.moneyScore);
-      $("#roundNumber").html(round);
-    } else if(winner = false) {
-      player.moneyScore--;
-      $("#playerScore").html(player.moneyScore);
-      $("#roundNumber").html(round);
-    }
-}
-roundUp();*/
+
 
 function endRound() {
   deck = []
@@ -201,6 +198,8 @@ $("#endRoundButton").click(function(){
   console.log("dealer hand =" + dealer.handTotal)
   console.log("player hand =" + player.handTotal)
   $("#roundNumber").html(++round)
+  $("#dealerHandScore").html(dealer.handTotal)
+  $("#playerHandScore").html(player.handTotal)
 })
 
 function gameWinner() {
@@ -220,6 +219,11 @@ function resetRound() {
 $("#resetRoundButton").click(function(){
   resetRound()
 })
+
+//$("#playercard1").css(background-img, "url(/playiing)" )
+
+//$('#divID').css("background-image", "url(/myimage.jpg)");
+
 
 //if card is this suit && value, then show this image.
 
