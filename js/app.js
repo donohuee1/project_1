@@ -1,7 +1,7 @@
 ///////GLOBAL VARIABLES////////
 //test/////
 var cardSuits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
-var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
+var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
 var deck = []
 var cardCounterPlayer = 0;
