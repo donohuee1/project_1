@@ -205,9 +205,11 @@ function endRound() {
 
 $("#endRoundButton").click(function(){
   endRound()
+  $('.cardsPlayer').empty();//deletes the images in the players hand
+  $('.cardsDealer').empty();
+  //$('#playerCard').removeClass('playerCards')
   player.cardArr = []
   dealer.cardArr = []
-  //$('#playerCard').removeClass('playerCards')
 
   player.cardArr.push(getCard())//pushing random generated card into player and dealer card arrays
   player.cardArr.push(getCard())
