@@ -15,16 +15,25 @@
 h1 {
   color: red;
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+h4 {
+  color: black;
+  text-align: center;
+  padding-top: 5px;
+  text-decoration: underline;
 }
 
 h3 {
-  color: red;
+  color: black;
   text-align: center;
 }
 
 p {
   color: black;
   text-align: center;
+
 }
 
 ul {
@@ -114,6 +123,9 @@ img {
 #hideRules {
   margin: 0 auto;
   display: block;
+  background-color: white;
+  color: rgb(0, 200, 100);
+  border-radius: 10px;
 }
 
 #scoreboard {

@@ -45,3 +45,14 @@
 	-Javascript
 	-JQuery
 	-GitHub
+
+	####6. Approach Taken
+	-I started with the game logic and pseudo-coded
+
+	####7. Installation instructions
+	-Clone the Repo.
+	-Click on GitPages link to open the game in your browser.
+
+	####8. Unsolved Problems
+	-Create modals instead of alerts so you can see the cards before the round winner is announced.
+	-At will betting system
