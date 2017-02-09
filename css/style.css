@@ -1,5 +1,6 @@
 #container {
-  background-color: black;
+  background-image: url("https://s-media-cache-ak0.pinimg.com/564x/17/18/44/171844537e74e5ea3d30f256c2079238.jpg");
+  background-repeat:round;
   padding: 10px;
 }
 
@@ -45,44 +46,13 @@ img {
   margin: 5px;
 }
 
-#playerCard1 {
+.cardsPlayer {
   width:150px;
   height:250px;
   background-color: black;
   display: inline-block;
   margin: 0 auto;
-}
-
-#playerCard2 {
-  width:150px;
-  height:250px;
-  background-color: black;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-#playerCard3 {
-  width:150px;
-  height:250px;
-  background-color: black;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-#playerCard4 {
-  width:150px;
-  height:250px;
-  background-color: black;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-#playerCard5 {
-  width:150px;
-  height:250px;
-  background-color: black;
-  display: inline-block;
-  margin: 0 auto;
+  position: relative;
 }
 
 #dealerCard1 {
@@ -155,4 +125,16 @@ img {
 #hideRules {
   margin: 0 auto;
   display: block;
+}
+
+#scoreboard {
+  background-color: rgb(0, 200, 100);
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+#cardsPlayer {
+  margin: 0 auto;
+  position: relative;
 }
