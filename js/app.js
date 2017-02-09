@@ -3,7 +3,9 @@ var cardSuits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
 var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
 var deck = []
+var cardCounterPlayer = 0;
 
+var cardCounterDealer = 0;
 //var cardImages = [2, 3, 4, ] - these are links then use indexOf based on the randomly generated cards
 
 var player = {
@@ -88,6 +90,7 @@ cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (c
 cardScores(dealer.cardArr[0], dealer)//created array in player and dealer objects
 //cardScores(dealer.cardArr[1], dealer) - This gets called in the #stay click function
 
+function dealCards() {
 $("#playerCard1").html("<img src='assets/playing_card_images/"+
     player.cardArr[0].value+"_of_"+player.cardArr[0].cardSuits.toLowerCase()+".png'/>")
 
@@ -97,31 +100,73 @@ $("#playerCard2").html("<img src='assets/playing_card_images/"+
 $("#dealerCard1").html("<img src='assets/playing_card_images/"+
     dealer.cardArr[0].value+"_of_"+dealer.cardArr[0].cardSuits.toLowerCase()+".png'/>")
 
+    cardCounterPlayer = 3;
+
+    cardCounterDealer = 2;
+
+    $("#hit").click(function(){
+       player.cardArr.push(getCard())
+       cardScores(player.cardArr[player.cardArr.length - 1], player)
+       console.log("player hand =" +player.handTotal)
+       console.log("dealer hand =" +dealer.handTotal)
+       //console.log(roundWinner())
+       console.log(hitWinLogic())
+       $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+       $("#playerHandScore").html(player.handTotal)
+       $("#dealerHandScore").html(dealer.handTotal)
+       $("#playerCard"+cardCounterPlayer).html("<img src='assets/playing_card_images/"+
+        player.cardArr[player.cardArr.length - 1].value+"_of_"+player.cardArr[player.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
+        cardCounterPlayer++;
+    });
+
+    $("#stay").click(function(){
+    //cardScores(dealer.cardArr[0], dealer)//originally 1
+      while(dealer.handTotal < 17) {
+        dealer.cardArr.push(getCard())
+        console.log(dealer.cardArr)
+        cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
+        $("#dealerCard"+cardCounterDealer).html("<img src='assets/playing_card_images/"+
+            dealer.cardArr[dealer.cardArr.length - 1].value+"_of_"+dealer.cardArr[dealer.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
+        cardCounterDealer++;
+        //dealer.handTotal = dealer.handTotal + cardval//doesn't work
+      } console.log("dealer hand =" +dealer.handTotal)
+        console.log("player hand =" +player.handTotal)
+        roundWinner()
+        $("#playerHandScore").html(player.handTotal)
+        $("#dealerHandScore").html(dealer.handTotal)
+        $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+        //$("#hit").off()
+    });
+}
+dealCards()
+
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
     player.moneyScore = player.moneyScore + 100
     var winner = true
-    return "player wins"
+    console.log("player wins")
   } else if(player.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
-    return "dealer wins"
+    console.log("dealer wins")
   } else if(player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
-    return "dealer wins"
+    console.log("dealer wins")
   } else if(player.handTotal === dealer.handTotal && dealer.handTotal <= 21 && player.handTotal <= 21) {
-    return "It's a tie, no gain or loss"
+    console.log("It's a tie, no gain or loss")
   } else if(player.handTotal > 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
-    return "dealer wins"
+    console.log("dealer wins")
   } else if(player.handTotal <= 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore + 100
     var winner = true
-    return "player wins"
+    console.log("player wins")
   }
   $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+  $("#hit").off()
+  $("#stay").off()//if there's a winner, cannot click
 }
 //console.log(roundWinner())
 console.log("dealer hand =" + dealer.handTotal)
@@ -133,10 +178,10 @@ function hitWinLogic(){
   if(player.handTotal > 21) {
     player.moneyScore = player.moneyScore -100
     var winner = false
-    $("#hit").off()
-    $("#stay").off()
-    return "dealer wins"
     $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+    $("#hit").off()
+    $("#stay").off()//if there's a winner, cannot click
+    return "dealer wins"
   }
 }
 /////////////If there's time/////////////
@@ -146,43 +191,8 @@ function hitWinLogic(){
 
 ///////////////
 
-var cardCounterPlayer = 3;
 
-var cardCounterDealer = 2;
 
-$("#hit").click(function(){
-   player.cardArr.push(getCard())
-   cardScores(player.cardArr[player.cardArr.length - 1], player)
-   console.log("player hand =" +player.handTotal)
-   console.log("dealer hand =" +dealer.handTotal)
-   //console.log(roundWinner())
-   console.log(hitWinLogic())
-   $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
-   $("#playerHandScore").html(player.handTotal)
-   $("#dealerHandScore").html(dealer.handTotal)
-   $("#playerCard"+cardCounterPlayer).html("<img src='assets/playing_card_images/"+
-    player.cardArr[player.cardArr.length - 1].value+"_of_"+player.cardArr[player.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
-    cardCounterPlayer++;
-});
-
-$("#stay").click(function(){
-//cardScores(dealer.cardArr[0], dealer)//originally 1
-  while(dealer.handTotal < 17) {
-    dealer.cardArr.push(getCard())
-    console.log(dealer.cardArr)
-    cardScores(dealer.cardArr[dealer.cardArr.length - 1], dealer)
-    $("#dealerCard"+cardCounterDealer).html("<img src='assets/playing_card_images/"+
-        dealer.cardArr[dealer.cardArr.length - 1].value+"_of_"+dealer.cardArr[dealer.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
-    cardCounterDealer++;
-    //dealer.handTotal = dealer.handTotal + cardval//doesn't work
-  } console.log("dealer hand =" +dealer.handTotal)
-    console.log("player hand =" +player.handTotal)
-    console.log(roundWinner())
-    $("#playerHandScore").html(player.handTotal)
-    $("#dealerHandScore").html(dealer.handTotal)
-    $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
-    $("#hit").off()
-});
 //If I hit stay, forces dealer to draw card
 
 $("#hideRules").click(function(){
@@ -205,8 +215,9 @@ function endRound() {
 
 $("#endRoundButton").click(function(){
   endRound()
-  $('.cardsPlayer').empty();//deletes the images in the players hand
-  $('.cardsDealer').empty();
+  // $('.cardsPlayer').empty();//deletes the images in the players hand
+  // $('.cardsDealer').empty();
+
   //$('#playerCard').removeClass('playerCards')
   player.cardArr = []
   dealer.cardArr = []
@@ -226,6 +237,8 @@ $("#endRoundButton").click(function(){
   $("#roundNumber").html(++round)
   $("#dealerHandScore").html(dealer.handTotal)
   $("#playerHandScore").html(player.handTotal)
+  $(".cardsPlayer, .cardsDealer").empty()
+  dealCards()
   //$("#hit").on()
   //$("#stay").on()
   //$("#playerCard1 img").remove()
