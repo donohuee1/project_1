@@ -1,4 +1,5 @@
 ///////GLOBAL VARIABLES////////
+//test/////
 var cardSuits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
 var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
