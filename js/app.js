@@ -214,6 +214,8 @@ gameWinner();
 
 function resetRound() {
   location.reload()
+  playerHandScore = 0
+  dealerHandScore = 0
 }
 
 $("#resetRoundButton").click(function(){
