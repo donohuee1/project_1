@@ -88,6 +88,15 @@ cardScores(player.cardArr[1], player)//parameter we called earlier in getCard (c
 cardScores(dealer.cardArr[0], dealer)//created array in player and dealer objects
 //cardScores(dealer.cardArr[1], dealer) - This gets called in the #stay click function
 
+$("#playerCard1").html("<img src='assets/playing_card_images/"+
+    player.cardArr[0].value+"_of_"+player.cardArr[0].cardSuits.toLowerCase()+".png'/>")
+
+$("#playerCard2").html("<img src='assets/playing_card_images/"+
+    player.cardArr[1].value+"_of_"+player.cardArr[1].cardSuits.toLowerCase()+".png'/>")
+
+$("#dealerCard1").html("<img src='assets/playing_card_images/"+
+    dealer.cardArr[0].value+"_of_"+dealer.cardArr[0].cardSuits.toLowerCase()+".png'/>")
+
 function roundWinner () {
   if(player.handTotal > dealer.handTotal && player.handTotal <= 21) {
     player.moneyScore = player.moneyScore + 100
@@ -146,6 +155,12 @@ $("#hit").click(function(){
    $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
    $("#playerHandScore").html(player.handTotal)
    $("#dealerHandScore").html(dealer.handTotal)
+   $("#playerCard3").html("<img src='assets/playing_card_images/"+
+    player.cardArr[2].value+"_of_"+player.cardArr[2].cardSuits.toLowerCase()+".png'/>")
+  $("#playerCard4").html("<img src='assets/playing_card_images/"+
+    player.cardArr[3].value+"_of_"+player.cardArr[3].cardSuits.toLowerCase()+".png'/>")
+  $("#playerCard5").html("<img src='assets/playing_card_images/"+
+    player.cardArr[4].value+"_of_"+player.cardArr[4].cardSuits.toLowerCase()+".png'/>")
 });
 
 $("#stay").click(function(){
@@ -160,6 +175,8 @@ cardScores(dealer.cardArr[1], dealer)
     $("#playerHandScore").html(player.handTotal)
     $("#dealerHandScore").html(dealer.handTotal)
     $("#playerscore").html(player.moneyScore)//NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+    $("#dealerCard2").html("<img src='assets/playing_card_images/"+
+        dealer.cardArr[1].value+"_of_"+dealer.cardArr[1].cardSuits.toLowerCase()+".png'/>")
 });
 //If I hit stay, forces dealer to draw card
 

@@ -39,12 +39,11 @@ ul {
 }
 
 #playerCard1 {
+  width:150px;
+  height:250px;
   background-color: black;
   display: inline-block;
   margin: 3px;
-  max-width:100%;
-  max-height:100%;
-  object-fit: scale-down;
 }
 
 #playerCard2 {
@@ -88,6 +87,30 @@ ul {
 }
 
 #dealerCard2 {
+  width:150px;
+  height:250px;
+  background-color: black;
+  display: inline-block;
+  margin: 3px;
+}
+
+#dealerCard3 {
+  width:150px;
+  height:250px;
+  background-color: black;
+  display: inline-block;
+  margin: 3px;
+}
+
+#dealerCard4 {
+  width:150px;
+  height:250px;
+  background-color: black;
+  display: inline-block;
+  margin: 3px;
+}
+
+#dealerCard5 {
   width:150px;
   height:250px;
   background-color: black;
