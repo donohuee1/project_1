@@ -149,24 +149,30 @@ function roundWinner() {
     player.moneyScore = player.moneyScore + 100
     var winner = true
     console.log("player wins")
+    alert ("Player wins this round!")
   } else if (player.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
     console.log("dealer wins")
+    alert ("Dealer wins this round!")
   } else if (player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
     console.log("dealer wins")
+    alert ("Dealer wins this round!")
   } else if (player.handTotal === dealer.handTotal && dealer.handTotal <= 21 && player.handTotal <= 21) {
     console.log("It's a tie, no gain or loss")
+    alert ("This round is a tie!")
   } else if (player.handTotal > 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
     console.log("dealer wins")
+    alert ("Dealer wins this round!")
   } else if (player.handTotal <= 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore + 100
     var winner = true
     console.log("player wins")
+    alert ("Player wins this round!")
   }
   $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
   $("#hit").off()
@@ -185,7 +191,8 @@ function hitWinLogic() {
     $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
     $("#hit").off()
     $("#stay").off() //if there's a winner, cannot click
-    return "dealer wins"
+    console.log("dealer wins")
+    alert ("Dealer wins this round!")
   }
 }
 /////////////If there's time/////////////
@@ -276,6 +283,8 @@ function resetGame() {
 $("#newGameButton").click(function() {
   resetGame()
 })
+
+
 
 //$("#playercard1").css(background-img, "url(/playiing)" )
 
