@@ -12,7 +12,6 @@
     <div id="container">
     <div id="table">
       <h1>BLACKJACK</h1>
-      <button id="newGameButton">New Game</button>
       <div id="scoreboard">
       <h3>Player: <span id="playerscore">0</span> Dollars  |  Round: <span id="roundNumber">1</span></h3>
       </div>
@@ -29,10 +28,11 @@
           </ul>
         <button id="hideRules">Hide Rules</button>
     </div>
-    <button id="endRoundButton">End Round</button>
     <div id="allPlayerButtons">
       <button id="hit">Hit</button>
       <button id="stay">Stay</button>
+      <button id="endRoundButton">End Round</button>
+      <button id="newGameButton">New Game</button>
     </div>
   <div id="playerCards">
     <p>PLAYER CARDS</p>
@@ -53,6 +53,20 @@
     <div class="cardsDealer" id="dealerCard4"></div>
     <div class="cardsDealer" id="dealerCard5"></div>
   </div>
+  </div>
+
+  <!-- Trigger/Open The Modal -->
+  <button id="myBtn">Open Modal</button>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id=openModal></p>
+    </div>
+
   </div>
 
 </div>

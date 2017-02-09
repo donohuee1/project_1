@@ -149,30 +149,42 @@ function roundWinner() {
     player.moneyScore = player.moneyScore + 100
     var winner = true
     console.log("player wins")
-    alert ("Player wins this round! Click 'end round' next.")
+    $("#openModal").html("Player wins this round! | +$100 | Click 'END ROUND' next.")
+    //alert ("Player wins this round! Click 'end round' next.")
+    modal.css("display", "block");
   } else if (player.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
     console.log("dealer wins")
-    alert ("Dealer wins this round! Click 'end round' next.")
+    $("#openModal").html("Dealer wins this round! | -$100 | Click 'END ROUND' next.")
+    //alert ("Dealer wins this round! Click 'end round' next.")
+    modal.css("display", "block");
   } else if (player.handTotal < dealer.handTotal && dealer.handTotal <= 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
     console.log("dealer wins")
-    alert ("Dealer wins this round! Click 'end round' next.")
+    $("#openModal").html("Dealer wins this round! | -$100 | Click 'END ROUND' next.")
+    //alert ("Dealer wins this round! Click 'end round' next.")
+    modal.css("display", "block");
   } else if (player.handTotal === dealer.handTotal && dealer.handTotal <= 21 && player.handTotal <= 21) {
     console.log("It's a tie, no gain or loss")
-    alert ("This round is a tie! Click 'end round' next.")
+    $("#openModal").html("This round is a tie! Click 'END ROUND' next.")
+    //alert ("This round is a tie! Click 'end round' next.")
+    modal.css("display", "block");
   } else if (player.handTotal > 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
     console.log("dealer wins")
-    alert ("Dealer wins this round! Click 'end round' next.")
+    $("#openModal").html("Dealer wins this round! | -$100 | Click 'END ROUND' next.")
+    //alert ("Dealer wins this round! Click 'end round' next.")
+    modal.css("display", "block");
   } else if (player.handTotal <= 21 && dealer.handTotal > 21) {
     player.moneyScore = player.moneyScore + 100
     var winner = true
     console.log("player wins")
-    alert ("Player wins this round! Click 'end round' next.")
+    $("#openModal").html("Player wins this round! | +$100 | Click 'END ROUND' next.")
+    //alert ("Player wins this round! Click 'end round' next.")
+    modal.css("display", "block");
   }
   $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
   $("#hit").off()
@@ -192,7 +204,9 @@ function hitWinLogic() {
     $("#hit").off()
     $("#stay").off() //if there's a winner, cannot click
     console.log("dealer wins")
-    alert ("Dealer wins this round! Click 'end round' next.")
+    $("#openModal").html("Dealer wins this round! | -$100 | Click 'END ROUND' next.")
+    //alert ("Dealer wins this round! Click 'end round' next.")
+    modal.css("display", "block");
   }
 }
 /////////////If there's time/////////////
@@ -226,10 +240,7 @@ function endRound() {
 
 $("#endRoundButton").click(function() {
   endRound()
-  // $('.cardsPlayer').empty();//deletes the images in the players hand
-  // $('.cardsDealer').empty();
 
-  //$('#playerCard').removeClass('playerCards')
   player.cardArr = []
   dealer.cardArr = []
 
@@ -250,18 +261,6 @@ $("#endRoundButton").click(function() {
   $("#playerHandScore").html(player.handTotal)
   $(".cardsPlayer, .cardsDealer").empty()
   dealCards()
-  //$("#hit").on()
-  //$("#stay").on()
-  //$("#playerCard1 img").remove()
-  //$("#playerCard2 img").remove()
-  //$("#playerCard3 img").remove()
-
-  /*$("#playerCard"+cardCounterPlayer).html("<img src='assets/playing_card_images/"+
-   player.cardArr[player.cardArr.length - 1].value+"_of_"+player.cardArr[player.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
-   cardCounterPlayer++;
-   $("#dealerCard"+cardCounterDealer).html("<img src='assets/playing_card_images/"+
-   dealer.cardArr[dealer.cardArr.length - 1].value+"_of_"+dealer.cardArr[dealer.cardArr.length - 1].cardSuits.toLowerCase()+".png'/>")
-   cardCounterDealer++;*/
 })
 
 function gameWinner() {
@@ -283,6 +282,26 @@ function resetGame() {
 $("#newGameButton").click(function() {
   resetGame()
 })
+
+///////////////////////////////////////////////////////////
+// Get the modal
+var modal = $('#myModal');
+
+// Get the <span> element that closes the modal
+//var span = $(".close")[0];
+
+
+// Closes the modal
+$(".close").click(function() {
+    modal.css("display", "none");
+})
+
+// When the user clicks anywhere outside of the modal, close it
+/*window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}*/
 
 
 
