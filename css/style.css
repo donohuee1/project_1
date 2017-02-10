@@ -16,6 +16,7 @@ h1 {
   color: red;
   text-align: center;
   text-shadow: 2px 2px 4px #000000;
+  font-family: fantasy;
 }
 
 h4 {
@@ -26,13 +27,14 @@ h4 {
 }
 
 h3 {
-  color: black;
+  color: red;
   text-align: center;
 }
 
 p {
   color: black;
   text-align: center;
+  font-weight: bold;
 
 }
 
@@ -46,7 +48,7 @@ img {
 }
 
 #playerCards {
-  background-color: rgb(0, 200, 100);
+  background-color: rgb(255, 0, 0);
   width: 800px;
   margin-top:5px;
   margin-bottom:5px;
@@ -57,7 +59,7 @@ img {
 }
 
 #dealerCards {
-  background-color: rgb(0, 200, 100);
+  background-color: rgb(255, 0, 0);
   width: 800px;
   margin-top:5px;
   margin-bottom:5px;
@@ -98,6 +100,11 @@ img {
   color: red;
 }
 
+#endRoundButton:hover {
+  background-color: red;
+  color: white;
+}
+
 #newGameButton {
   float: right;
   background-color: rgb(0, 0, 0);
@@ -109,6 +116,11 @@ img {
   color: red;
 }
 
+#newGameButton:hover {
+  background-color: red;
+  color: white;
+}
+
 #hit {
   background-color: rgb(0, 0, 0);
   border-radius: 10px;
@@ -117,6 +129,12 @@ img {
   padding: 10px;
   color: red;
 }
+
+#hit:hover {
+  background-color: red;
+  color: white;
+}
+
 
 #stay {
   background-color: rgb(0, 0, 0);
@@ -127,16 +145,26 @@ img {
   color: red;
 }
 
+#stay:hover {
+  background-color: red;
+  color: white;
+}
+
 #hideRules {
   margin: 0 auto;
   display: block;
   background-color: white;
-  color: rgb(0, 200, 100);
+  color: black;
   border-radius: 10px;
 }
 
+#hideRules:hover{
+  background-color: black;
+  color: white;
+}
+
 #scoreboard {
-  background-color: rgb(0, 200, 100);
+  background-color: rgb(0, 0, 0);
   width: 300px;
   margin: 0 auto;
   border-radius: 10px;
@@ -148,7 +176,7 @@ img {
 }
 
 #handTotalBoard {
-  background-color: rgb(0, 200, 100);
+  background-color: rgb(0, 0, 0);
   width: 400px;
   margin: 0 auto;
   border-radius: 10px;
@@ -157,30 +185,31 @@ img {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); Black
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: rgba(0, 200, 100, .8);
+    margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 1px solid black;
+    width: 60%;
+    font-family: fantasy;
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
+    color: red;
     float: right;
     font-size: 28px;
     font-weight: bold;
