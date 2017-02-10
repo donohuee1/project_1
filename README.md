@@ -47,12 +47,14 @@
 	-GitHub
 
 ####6. Approach Taken
-	-I started with the game logic and pseudo-coded
+	-Started with wire frames to map out the user journey.
+	-Built out Trello board to break down those steps and to keep track of my progress.
+	-From there, began working on the game logic first. Lead with Pseudo-Code, then logged everything in the console to start.
+	-Once I had the logic down, I was able to add my styling/CSS as the final steps.
 
 ####7. Installation instructions
 	-Clone the Repo.
 	-Click on GitPages link to open the game in your browser.
 
 ####8. Unsolved Problems
-	-Create modals instead of alerts so you can see the cards before the round winner is announced.
-	-At will betting system
+	-At will betting system.
