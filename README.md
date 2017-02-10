@@ -27,18 +27,18 @@
 	-Ability to add more than one player.
 
 ####6. Wireframes
-	![Wireframe 2](./assets/number_2.png)
+![Wireframe 2](./assets/number_2.png)
 
-	![Wireframe 3](./assets/number_3.png)
+![Wireframe 3](./assets/number_3.png)
 
-	![Wireframe 4](./assets/number_4.png)
+![Wireframe 4](./assets/number_4.png)
 
-	![Wireframe 4a](./assets/number_4a.png)
+![Wireframe 4a](./assets/number_4a.png)
 
-	![Wireframe 4b](./assets/number_4b.png)
+![Wireframe 4b](./assets/number_4b.png)
 
-	![Wireframe 5](./assets/number_5.png)
+![Wireframe 5](./assets/number_5.png)
 
-	![Wireframe 6](./assets/number_6.png)
+![Wireframe 6](./assets/number_6.png)
 
-	![Wireframe 7](./assets/number_7.png)
+![Wireframe 7](./assets/number_7.png)
