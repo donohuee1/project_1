@@ -1,5 +1,4 @@
 ///////GLOBAL VARIABLES////////
-//test/////
 var cardSuits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
 var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace']
 //Has to know when a card has been picked and won't call it again since it's only 1 deck
@@ -7,7 +6,6 @@ var deck = []
 var cardCounterPlayer = 0;
 
 var cardCounterDealer = 0;
-//var cardImages = [2, 3, 4, ] - these are links then use indexOf based on the randomly generated cards
 
 var player = {
   displayName: "Player",
@@ -28,10 +26,6 @@ var dealer = {
 var round = 1
 
 var winner = true
-
-/////////HAPPENS IMMEDIATELY////////
-
-
 
 
 /////////FUNCTIONS///////////////
@@ -112,7 +106,7 @@ function dealCards() {
     console.log("dealer hand =" + dealer.handTotal)
     //console.log(roundWinner())
     console.log(hitWinLogic())
-    $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+    $("#playerscore").html(player.moneyScore)
     $("#playerHandScore").html(player.handTotal)
     $("#dealerHandScore").html(dealer.handTotal)
     $("#playerCard" + cardCounterPlayer).html("<img src='assets/playing_card_images/" +
@@ -130,14 +124,14 @@ function dealCards() {
       $("#dealerCard" + cardCounterDealer).html("<img src='assets/playing_card_images/" +
         dealer.cardArr[dealer.cardArr.length - 1].value + "_of_" + dealer.cardArr[dealer.cardArr.length - 1].cardSuits.toLowerCase() + ".png'/>")
       cardCounterDealer++;
-      //dealer.handTotal = dealer.handTotal + cardval//doesn't work
+      //dealer.handTotal = dealer.handTotal + cardval
     }
     console.log("dealer hand =" + dealer.handTotal)
     console.log("player hand =" + player.handTotal)
     roundWinner()
     $("#playerHandScore").html(player.handTotal)
     $("#dealerHandScore").html(dealer.handTotal)
-    $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+    $("#playerscore").html(player.moneyScore)
     //$("#hit").off()
     gameWinner();
   });
@@ -186,7 +180,7 @@ function roundWinner() {
     //alert ("Player wins this round! Click 'end round' next.")
     modal.css("display", "block");
   }
-  $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+  $("#playerscore").html(player.moneyScore)
   $("#hit").off()
   $("#stay").off() //if there's a winner, cannot click
 }
@@ -200,7 +194,7 @@ function hitWinLogic() {
   if (player.handTotal > 21) {
     player.moneyScore = player.moneyScore - 100
     var winner = false
-    $("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+    $("#playerscore").html(player.moneyScore)
     $("#hit").off()
     $("#stay").off() //if there's a winner, cannot click
     console.log("dealer wins")
@@ -224,7 +218,7 @@ $("#hideRules").click(function() {
   $("#rules").hide();
 })
 
-$("#playerscore").html(player.moneyScore) //NOT RETURNING AFTER THE FIRST DEAL. SHOULD NOT DECLARE ROUNDWINNER/MONEY WON UNTIL PLAYER HAS CLICKED STAY
+$("#playerscore").html(player.moneyScore)
 ///////////////////////////////////
 
 
@@ -289,29 +283,8 @@ $("#newGameButton").click(function() {
 // Get the modal
 var modal = $('#myModal');
 
-// Get the <span> element that closes the modal
-//var span = $(".close")[0];
-
 
 // Closes the modal
 $(".close").click(function() {
     modal.css("display", "none");
 })
-
-// When the user clicks anywhere outside of the modal, close it
-/*window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}*/
-
-
-
-//$("#playercard1").css(background-img, "url(/playiing)" )
-
-//$('#divID').css("background-image", "url(/myimage.jpg)");
-
-
-//if card is this suit && value, then show this image.
-
-//2 divs for player and 2 for dealer
